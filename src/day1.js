@@ -15,5 +15,4 @@ function findFirstRepeating(array){
 
 
 const array = readLines('../input/day1.txt').map(Number);
-console.log(array.reduce((a, b) => a+b, 0));
 console.log(findFirstRepeating(array));
