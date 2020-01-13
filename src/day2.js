@@ -1,11 +1,4 @@
-function Counter(array) {
-    array.forEach(val => this[val] = (this[val] || 0) + 1);
-}
-
-function zip(arr1, arr2){
-    // See https://stackoverflow.com/questions/22015684/how-do-i-zip-two-arrays-in-javascript
-    return arr1.map((x, i) => [x, arr2[i]]);
-}
+import {readLines, zip, Counter} from "./utils.js";
 
 
 function computeChecksum(listOfCharArrays){
@@ -44,7 +37,6 @@ function commonLettersIfDiffByOne(str, otherStr){
 }
 
 
-const fs = require('fs');
-const array = fs.readFileSync('input/day2.txt').toString().split("\n").map(s => s.trim().split(""));
+const array = readLines('../input/day2.txt').map(s => s.split(""));
 console.log(computeChecksum(array));
 console.log(findCommonLettersOfCorrectBoxIDs(array));

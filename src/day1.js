@@ -1,3 +1,6 @@
+import { readLines } from "./utils.js";
+
+
 function findFirstRepeating(array){
     const seen = new Set();
     let i = 0;
@@ -8,9 +11,9 @@ function findFirstRepeating(array){
         i = (i + 1) % array.length;
     } while(!seen.has(sum));
     return sum;
-};
+}
 
-const fs = require('fs');
-const array = fs.readFileSync('input/day1.txt').toString().split("\n").map(s => s.trim()).map(Number);
+
+const array = readLines('../input/day1.txt').map(Number);
 console.log(array.reduce((a, b) => a+b, 0));
 console.log(findFirstRepeating(array));

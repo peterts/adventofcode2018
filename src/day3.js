@@ -1,16 +1,7 @@
+import {readLines, Points} from "./utils.js";
+
+
 const claimPattern = /#(\d+) @ (\d+),(\d+): (\d+)x(\d+)/;
-const fs = require('fs');
-
-
-function Points(){
-    this.items = {};
-    this.hasItem = (x, y) => (this.items[x] || {}).hasOwnProperty(y);
-    this.setItem = (x, y, value) => {
-        this.items[x] = (this.items[x] || {});
-        this.items[x][y] = value;
-    };
-    this.numItems = () => Object.values(this.items).reduce((total, items) => total + Object.keys(items).length, 0);
-}
 
 
 function countOverlappingClaimsAndFindNonOverlapping(claims){
@@ -50,12 +41,10 @@ function parseClaimStr(claimStr){
 
 
 function runOnInput(inputFileName){
-    const claimStrs = fs.readFileSync(inputFileName).toString().split("\n").map(s => s.trim());
-    const claims = [];
-    for(let claimStr of claimStrs) claims.push(parseClaimStr(claimStr));
-    return countOverlappingClaimsAndFindNonOverlapping(claims);
+    const claimStrs = readLines(inputFileName);
+    return countOverlappingClaimsAndFindNonOverlapping(claimStrs.map(parseClaimStr));
 }
 
 
-runOnInput("input/day3-1.txt");
-runOnInput("input/day3-2.txt");
+runOnInput("../input/day3-1.txt");
+runOnInput("../input/day3-2.txt");

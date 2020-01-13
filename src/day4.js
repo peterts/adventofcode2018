@@ -1,6 +1,8 @@
+import {readLines, sum} from "./utils.js";
+
+
 const recordPattern = /\[(\d{4}-\d{2}-\d{2} \d{2}:(\d{2}))] (.+)/;
 const guardNumPattern = /#(\d+)/;
-const fs = require('fs');
 
 
 function parseRecord(recordStr){
@@ -67,13 +69,8 @@ function maxOfValues(obj){
 }
 
 
-function sum(arr){
-    return arr.reduce((_total, x) => _total + x, 0);
-}
-
-
 function runOnInput(inputFileName){
-    let records = fs.readFileSync(inputFileName).toString().split("\n").map(s => s.trim());
+    let records = readLines(inputFileName);
     const recordsParsed = records.map(parseRecord).sort((a, b) => (a.dt > b.dt) ? 1 : -1);
     const sleepTimes = getSleepTimesPerGuard(recordsParsed);
     let guardMostAsleep = keyOfHighestChildValueSum(sleepTimes);
@@ -86,5 +83,5 @@ function runOnInput(inputFileName){
 }
 
 
-runOnInput("input/day4-1.txt");
-runOnInput("input/day4-2.txt");
+runOnInput("../input/day4-1.txt");
+runOnInput("../input/day4-2.txt");
