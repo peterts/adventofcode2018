@@ -4,7 +4,7 @@
   "description": "Solutions for AoC2018 in JavaScript",
   "main": "index.js",
   "dependencies": {
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.19"
   },
   "devDependencies": {},
   "repository": {
